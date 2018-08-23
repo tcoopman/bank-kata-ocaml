@@ -29,4 +29,4 @@ S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/stdio
 S ../lib
 S .
 FLG -ppx '/home/thomas/Workspace/ocaml/bank-kata/_build/default/.ppx/ppx_expect/ppx.exe --as-ppx --cookie '\''library-name="test"'\'''
-FLG -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs
+FLG -open Test -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs
