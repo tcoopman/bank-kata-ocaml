@@ -11,6 +11,7 @@ B /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/ppx_inline_test/runtime-lib
 B /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/ppx_sexp_conv/runtime-lib
 B /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/sexplib0
 B /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/stdio
+B ../_build/default/lib/.lib.objs
 B ../_build/default/test/.test.objs
 S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/base
 S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/base/caml
@@ -25,6 +26,7 @@ S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/ppx_inline_test/runtime-lib
 S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/ppx_sexp_conv/runtime-lib
 S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/sexplib0
 S /home/thomas/Workspace/ocaml/bank-kata/_opam/lib/stdio
+S ../lib
 S .
 FLG -ppx '/home/thomas/Workspace/ocaml/bank-kata/_build/default/.ppx/ppx_expect/ppx.exe --as-ppx --cookie '\''library-name="test"'\'''
-FLG -open Test -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs
+FLG -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs
