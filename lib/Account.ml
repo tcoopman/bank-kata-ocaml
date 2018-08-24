@@ -6,8 +6,8 @@ type account = transaction list
 
 let create () = []
 
-let deposit amount account = {date= "14/01/2012"; amount} :: account
-let withdrawal amount account = {date= "14/01/2012"; amount = amount *. -1.} :: account
+let deposit ~amount ~on account = {date= on; amount} :: account
+let withdrawal ~amount ~on account = {date= on; amount = amount *. -1.} :: account
 
 let print account =
   let calculate account =
