@@ -6,21 +6,31 @@ type account = transaction list
 
 let create () = []
 
-let deposit ~amount ~on account = {date= on; amount} :: account
-let withdrawal ~amount ~on account = {date= on; amount = amount *. -1.} :: account
+let deposit ~amount ~on account = {date = on; amount} :: account
+let withdrawal ~amount ~on account = {date = on; amount = amount *. -1.} :: account
 
 let print account =
-  let calculate account =
-    List.fold_right (fun transaction (total, x) -> (total +. transaction.amount, (total +. transaction.amount, transaction) :: x)) account (0., [])
+  let add_balance account =
+    let (_, with_calculated_balance) = List.fold_right (
+        fun transaction (total, calculated_transactions) -> 
+          (total +. transaction.amount, (total +. transaction.amount, transaction) :: calculated_transactions)
+      ) account (0., []) in
+    with_calculated_balance
   in
-  let buffer = Buffer.create (List.length account * 50) in
-  let rec fill_buffer = function
-    | [] -> ()
-    | (total, transaction) :: tl ->
-      Buffer.add_string buffer (Printf.sprintf "%s || %.2f || %.2f\n" transaction.date transaction.amount total);
-      fill_buffer tl
+  let to_print_statements account_with_balance =
+    List.map (fun (total, transaction) -> 
+        Printf.sprintf "%s || %.2f || %.2f\n" transaction.date transaction.amount total
+      ) account_with_balance
   in
-  let (_, calculated) = calculate account in
-  Buffer.add_string buffer "date || amount || balance\n";
-  fill_buffer calculated;
-  print_string (Buffer.contents buffer)
+  let print_statements_to_string_with_header print_statements =
+    let buffer = Buffer.create (List.length account * 50) in
+    Buffer.add_string buffer "date || amount || balance\n";
+    List.iter (Buffer.add_string buffer) print_statements;
+    Buffer.contents buffer
+  in
+
+  account
+  |> add_balance
+  |> to_print_statements
+  |> print_statements_to_string_with_header
+  |> print_string
