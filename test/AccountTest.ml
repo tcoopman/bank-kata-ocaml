@@ -14,12 +14,18 @@ module TestClock (D : TestDates) = struct
 end
 
 let%expect_test "Printing the statements should contain all transactions" =
-  let module Account = Lib.Account.Make(TestClock(struct let dates = [|"10/01/2012"; "13/01/2012"; "14/01/2012"|] end)) in
+  let module Account = Lib.Account.Make(TestClock(struct let dates = [|
+      "10/01/2012"; 
+      "13/01/2012"; 
+      "14/01/2012"|] end)) 
+  in
+
   Account.create ()
   |> Account.deposit ~amount:1000.0
   |> Account.deposit ~amount:2000.0
   |> Account.withdrawal ~amount:500.0
   |> Account.print;
+
   [%expect{|
     date || amount || balance
     14/01/2012 || -500.00 || 2500.00

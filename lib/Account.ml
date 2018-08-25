@@ -1,8 +1,4 @@
-module Clock = struct
-  let now () = "SystemClock"
-end
-
-module type Clock_S = module type of Clock
+open Common
 
 module Make(Clock: Clock_S) = struct
   type transaction = {
