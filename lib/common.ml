@@ -1,5 +1,3 @@
-module Clock = struct
-  let now () = "SystemClock"
+module type Clock_S = sig 
+  val now : unit -> string
 end
-
-module type Clock_S = module type of Clock

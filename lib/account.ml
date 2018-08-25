@@ -39,4 +39,4 @@ module Make(Clock: Clock_S) = struct
     |> print_string
 end
 
-include Make(Clock)
+include Make(struct let now () = "SystemClock" end)
